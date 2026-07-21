@@ -533,7 +533,7 @@ export default function AlertsPage() {
                         </Typography>
                         {patient && (
                           <Typography variant="caption" color="text.secondary">
-                            {patient.age}y • {patient.gender}
+                            {patient.age}y • {patient.sex}
                           </Typography>
                         )}
                       </TableCell>
@@ -544,8 +544,8 @@ export default function AlertsPage() {
                         <Stack direction="row" spacing={1} sx={{ alignItems: "center", mb: 0.5 }}>
                           <Typography
                             variant="body2"
-                            fontWeight={800}
                             color={probPercent >= 50 ? "error.main" : "warning.main"}
+                            sx={{ fontWeight: 800 }}
                           >
                             {probPercent}%
                           </Typography>
@@ -578,7 +578,7 @@ export default function AlertsPage() {
                             "{alertItem.review_notes}"
                           </Typography>
                         ) : (
-                          <Typography variant="caption" color="text.secondary" italic>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontStyle: "italic" }}>
                             No review notes
                           </Typography>
                         )}

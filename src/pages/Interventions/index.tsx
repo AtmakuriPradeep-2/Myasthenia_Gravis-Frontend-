@@ -471,12 +471,12 @@ export default function InterventionsPage() {
                     <TableRow key={item.id} hover sx={{ "&:hover": { bgcolor: "#F8FAFC" } }}>
                       <TableCell sx={{ fontWeight: 800 }}>#{item.id}</TableCell>
                       <TableCell>
-                        <Typography variant="body2" fontWeight={800} color="primary.main">
+                        <Typography variant="body2" color="primary.main" sx={{ fontWeight: 800 }}>
                           {patient ? patient.patient_code : `Patient #${item.patient_id}`}
                         </Typography>
                         {patient && (
                           <Typography variant="caption" color="text.secondary">
-                            {patient.age}y • {patient.gender}
+                            {patient.age}y • {patient.sex}
                           </Typography>
                         )}
                       </TableCell>
