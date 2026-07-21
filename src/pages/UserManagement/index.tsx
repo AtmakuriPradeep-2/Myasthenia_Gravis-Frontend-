@@ -62,7 +62,7 @@ function AddUserDialog({ open, onClose }: { open: boolean; onClose: () => void }
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth
       slotProps={{ paper: { sx: { borderRadius: 4, p: 1 } } }}>
       <DialogTitle sx={{ fontWeight: 800, color: "#0F172A", pb: 0 }}>
-        <Stack direction="row" spacing={1.5} alignItems="center">
+        <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
           <PersonAddRoundedIcon sx={{ color: "#2563EB" }} />
           <span>Add New User</span>
         </Stack>
@@ -147,7 +147,7 @@ function EditUserDialog({ user, onClose }: { user: User; onClose: () => void }) 
     <Dialog open onClose={onClose} maxWidth="sm" fullWidth
       slotProps={{ paper: { sx: { borderRadius: 4, p: 1 } } }}>
       <DialogTitle sx={{ fontWeight: 800, color: "#0F172A", pb: 0 }}>
-        <Stack direction="row" spacing={1.5} alignItems="center">
+        <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
           <EditRoundedIcon sx={{ color: "#2563EB" }} />
           <span>Edit User — {user.full_name}</span>
         </Stack>
@@ -285,8 +285,8 @@ export default function UserManagementPage() {
         boxShadow: "0 12px 40px rgba(15,23,42,0.2)",
       }}>
         <Box sx={{ position: "absolute", top: -50, right: -50, width: 220, height: 220, borderRadius: "50%", bgcolor: "rgba(37,99,235,0.15)" }} />
-        <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ xs: "flex-start", sm: "center" }} spacing={2} sx={{ position: "relative", zIndex: 1 }}>
-          <Stack direction="row" spacing={2} alignItems="center">
+        <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ position: "relative", zIndex: 1, justifyContent: "space-between", alignItems: { xs: "flex-start", sm: "center" } }}>
+          <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
             <Avatar sx={{ bgcolor: "rgba(37,99,235,0.3)", width: 56, height: 56, boxShadow: "0 0 0 3px rgba(255,255,255,0.15)" }}>
               <ManageAccountsRoundedIcon sx={{ fontSize: 30 }} />
             </Avatar>
@@ -372,7 +372,7 @@ export default function UserManagementPage() {
                       <TableRow key={u.id} hover sx={{ "&:last-child td": { borderBottom: "none" } }}>
                         {/* Name + Avatar */}
                         <TableCell>
-                          <Stack direction="row" spacing={1.5} alignItems="center">
+                          <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
                             <Avatar sx={{ width: 36, height: 36, bgcolor: rs.bg, color: rs.text, fontWeight: 700, fontSize: 14 }}>
                               {u.full_name?.charAt(0).toUpperCase() || "?"}
                             </Avatar>
