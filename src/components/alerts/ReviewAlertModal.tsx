@@ -122,7 +122,7 @@ export default function ReviewAlertModal({
 
           {/* Alert Context Summary Card */}
           <Box sx={{ p: 2, borderRadius: 2.5, bgcolor: "#F8FAFC", border: "1px solid #E2E8F0" }}>
-            <Stack direction="row" justifyContent="space-between" alignItems="center" mb={1.5}>
+            <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "center", mb: 1.5 }}>
               {getSeverityChip(alert.severity)}
               <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 600, display: "flex", alignItems: "center", gap: 0.5 }}>
                 <ScheduleIcon fontSize="inherit" />
@@ -130,7 +130,7 @@ export default function ReviewAlertModal({
               </Typography>
             </Stack>
 
-            <Stack direction="row" spacing={3} alignItems="center" mb={1.5}>
+            <Stack direction="row" spacing={3} sx={{ alignItems: "center", mb: 1.5 }}>
               <Box>
                 <Typography variant="caption" color="text.secondary" fontWeight={600}>
                   Patient Code

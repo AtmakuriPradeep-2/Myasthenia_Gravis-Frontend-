@@ -134,7 +134,7 @@ export default function DashboardHeader() {
               border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
-            <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 0.25 }}>
+            <Stack direction="row" spacing={1} sx={{ alignItems: "center", mb: 0.25 }}>
               <HealthAndSafetyRoundedIcon sx={{ fontSize: 16, color: "#93C5FD" }} />
               <Typography variant="caption" sx={{ color: "#93C5FD", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                 Autoimmune Target
@@ -155,7 +155,7 @@ export default function DashboardHeader() {
               border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
-            <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 0.25 }}>
+            <Stack direction="row" spacing={1} sx={{ alignItems: "center", mb: 0.25 }}>
               <MonitorHeartRoundedIcon sx={{ fontSize: 16, color: "#A7F3D0" }} />
               <Typography variant="caption" sx={{ color: "#A7F3D0", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                 Clinical Rating Scales

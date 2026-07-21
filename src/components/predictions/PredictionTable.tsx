@@ -199,7 +199,7 @@ export default function PredictionTable({
                     </TableCell>
 
                     <TableCell align="right">
-                      <Stack direction="row" spacing={0.5} justifyContent="flex-end">
+                      <Stack direction="row" spacing={0.5} sx={{ justifyContent: "flex-end" }}>
                         <Tooltip title="Print / Download Printable Report">
                           <IconButton
                             size="small"

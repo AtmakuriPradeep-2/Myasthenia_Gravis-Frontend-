@@ -541,7 +541,7 @@ export default function AlertsPage() {
                       <TableCell>{getSeverityBadge(alertItem.severity)}</TableCell>
 
                       <TableCell sx={{ width: 180 }}>
-                        <Stack direction="row" alignItems="center" spacing={1} mb={0.5}>
+                        <Stack direction="row" spacing={1} sx={{ alignItems: "center", mb: 0.5 }}>
                           <Typography
                             variant="body2"
                             fontWeight={800}
@@ -598,7 +598,7 @@ export default function AlertsPage() {
                       </TableCell>
 
                       <TableCell align="right">
-                        <Stack direction="row" spacing={1} justifyContent="flex-end">
+                        <Stack direction="row" spacing={1} sx={{ justifyContent: "flex-end" }}>
                           <Tooltip title="Review & Update Alert Status">
                             <Button
                               size="small"

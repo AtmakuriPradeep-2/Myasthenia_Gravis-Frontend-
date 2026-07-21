@@ -358,7 +358,7 @@ export default function Login() {
                 >
                   {ROLES.map((r) => (
                     <MenuItem key={r} value={r}>
-                      <Stack direction="row" spacing={1} alignItems="center">
+                      <Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
                         <Chip
                           label={r}
                           size="small"

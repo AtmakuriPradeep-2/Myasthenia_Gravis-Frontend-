@@ -221,7 +221,7 @@ export default function ProfilePage() {
                 },
               }}
             >
-              <Stack direction="row" spacing={1.5} alignItems="center">
+              <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
                 <Box
                   sx={{
                     width: 40, height: 40, borderRadius: 2.5,
@@ -260,7 +260,7 @@ export default function ProfilePage() {
               boxShadow: "0 4px 20px rgba(15,23,42,0.03)",
             }}
           >
-            <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 0.5 }}>
+            <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", mb: 0.5 }}>
               <Box
                 sx={{
                   width: 38, height: 38, borderRadius: 2.5,
@@ -394,7 +394,7 @@ export default function ProfilePage() {
               height: "100%",
             }}
           >
-            <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 0.5 }}>
+            <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", mb: 0.5 }}>
               <Box
                 sx={{
                   width: 38, height: 38, borderRadius: 2.5,
