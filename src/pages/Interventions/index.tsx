@@ -313,13 +313,13 @@ export default function InterventionsPage() {
         <Grid item xs={12} sm={6} md={3}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#FFFFFF", border: "1px solid #E2E8F0" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="text.secondary" fontWeight={700} textTransform="uppercase">
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700, textTransform: "uppercase" }}>
                 Total Interventions
               </Typography>
-              <Typography variant="h4" fontWeight={800} color="#0F172A" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="#0F172A" sx={{ mt: 0.5, fontWeight: 800 }}>
                 {metrics.total}
               </Typography>
-              <Typography variant="caption" color="text.secondary" fontWeight={600}>
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
                 Executed Care Actions
               </Typography>
             </CardContent>
@@ -329,13 +329,13 @@ export default function InterventionsPage() {
         <Grid item xs={12} sm={6} md={3}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#EFF6FF", border: "1px solid #BFDBFE" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="primary.dark" fontWeight={800} textTransform="uppercase">
+              <Typography variant="caption" color="primary.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
                 Medication Adjustments
               </Typography>
-              <Typography variant="h4" fontWeight={900} color="primary.main" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="primary.main" sx={{ mt: 0.5, fontWeight: 900 }}>
                 {metrics.medication}
               </Typography>
-              <Typography variant="caption" color="primary.dark" fontWeight={600}>
+              <Typography variant="caption" color="primary.dark" sx={{ fontWeight: 600 }}>
                 Dose & Therapy Tweaks
               </Typography>
             </CardContent>
@@ -345,13 +345,13 @@ export default function InterventionsPage() {
         <Grid item xs={12} sm={6} md={3}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#FEF2F2", border: "1px solid #FCA5A5" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="error.dark" fontWeight={800} textTransform="uppercase">
+              <Typography variant="caption" color="error.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
                 Emergency & Referrals
               </Typography>
-              <Typography variant="h4" fontWeight={900} color="error.main" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="error.main" sx={{ mt: 0.5, fontWeight: 900 }}>
                 {metrics.emergency}
               </Typography>
-              <Typography variant="caption" color="error.dark" fontWeight={600}>
+              <Typography variant="caption" color="error.dark" sx={{ fontWeight: 600 }}>
                 Acute Clinical Actions
               </Typography>
             </CardContent>
@@ -361,13 +361,13 @@ export default function InterventionsPage() {
         <Grid item xs={12} sm={6} md={3}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#ECFDF5", border: "1px solid #A7F3D0" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="success.dark" fontWeight={800} textTransform="uppercase">
+              <Typography variant="caption" color="success.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
                 Scheduled Follow-Ups
               </Typography>
-              <Typography variant="h4" fontWeight={800} color="success.main" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="success.main" sx={{ mt: 0.5, fontWeight: 800 }}>
                 {metrics.upcomingFollowUps}
               </Typography>
-              <Typography variant="caption" color="success.dark" fontWeight={600}>
+              <Typography variant="caption" color="success.dark" sx={{ fontWeight: 600 }}>
                 Upcoming Clinical Reviews
               </Typography>
             </CardContent>
@@ -457,7 +457,7 @@ export default function InterventionsPage() {
                   <TableCell colSpan={8} align="center" sx={{ py: 6 }}>
                     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 1 }}>
                       <HourglassEmptyIcon sx={{ fontSize: 40, color: "text.secondary" }} />
-                      <Typography variant="body1" fontWeight={700} color="text.secondary">
+                      <Typography variant="body1" color="text.secondary" sx={{ fontWeight: 700 }}>
                         No clinical interventions recorded matching criteria
                       </Typography>
                     </Box>
@@ -484,7 +484,7 @@ export default function InterventionsPage() {
                       <TableCell>{getTypeChip(item.intervention_type)}</TableCell>
 
                       <TableCell>
-                        <Typography variant="body2" fontWeight={700} sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                        <Typography variant="body2" sx={{ display: "flex", alignItems: "center", gap: 0.5, fontWeight: 700 }}>
                           <PersonIcon fontSize="inherit" color="action" />
                           {item.clinician}
                         </Typography>
@@ -518,7 +518,7 @@ export default function InterventionsPage() {
                       </TableCell>
 
                       <TableCell>
-                        <Typography variant="caption" color="text.secondary" fontWeight={600} display="flex" alignItems="center" gap={0.5}>
+                        <Typography variant="caption" color="text.secondary" sx={{ display: "flex", alignItems: "center", gap: 0.5, fontWeight: 600 }}>
                           <ScheduleIcon fontSize="inherit" />
                           {new Date(item.created_at).toLocaleDateString()}{" "}
                           {new Date(item.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
