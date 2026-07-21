@@ -132,30 +132,30 @@ export default function ReviewAlertModal({
 
             <Stack direction="row" spacing={3} sx={{ alignItems: "center", mb: 1.5 }}>
               <Box>
-                <Typography variant="caption" color="text.secondary" fontWeight={600}>
+                <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
                   Patient Code
                 </Typography>
-                <Typography variant="body1" fontWeight={800} color="primary.main">
+                <Typography variant="body1" color="primary.main" sx={{ fontWeight: 800 }}>
                   {patient ? patient.patient_code : `Patient #${alert.patient_id}`}
                 </Typography>
               </Box>
 
               {patient && (
                 <Box>
-                  <Typography variant="caption" color="text.secondary" fontWeight={600}>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
                     Demographics
                   </Typography>
-                  <Typography variant="body2" fontWeight={700}>
-                    {patient.age} yrs • {patient.gender}
+                  <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                    {patient.age} yrs • {patient.sex}
                   </Typography>
                 </Box>
               )}
 
               <Box>
-                <Typography variant="caption" color="text.secondary" fontWeight={600}>
+                <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
                   Predicted Risk Probability
                 </Typography>
-                <Typography variant="body1" fontWeight={800} color={probPercent >= 50 ? "error.main" : "warning.main"}>
+                <Typography variant="body1" color={probPercent >= 50 ? "error.main" : "warning.main"} sx={{ fontWeight: 800 }}>
                   {probPercent}%
                 </Typography>
               </Box>
@@ -202,7 +202,7 @@ export default function ReviewAlertModal({
 
           <Stack direction="row" spacing={1} sx={{ color: "text.secondary", fontSize: "0.85rem", alignItems: "center" }}>
             <PersonIcon fontSize="small" />
-            <Typography variant="caption" fontWeight={600}>
+            <Typography variant="caption" sx={{ fontWeight: 600 }}>
               Reviewing Clinician: <strong>{currentUsername}</strong>
             </Typography>
           </Stack>

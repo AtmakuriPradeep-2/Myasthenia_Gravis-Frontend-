@@ -246,7 +246,7 @@ export default function LogInterventionModal({
               />
             }
             label={
-              <Typography variant="body2" fontWeight={600} color="text.primary">
+              <Typography variant="body2" color="text.primary" sx={{ fontWeight: 600 }}>
                 Automatically mark linked Alert as <strong>Resolved</strong> upon saving
               </Typography>
             }

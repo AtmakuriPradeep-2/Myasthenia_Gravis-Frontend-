@@ -326,80 +326,80 @@ export default function AlertsPage() {
 
       {/* ─── Metric KPI Cards ─── */}
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={2.4}>
+        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#FFFFFF", border: "1px solid #E2E8F0" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="text.secondary" fontWeight={700} textTransform="uppercase">
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700, textTransform: "uppercase" }}>
                 Total Alerts
               </Typography>
-              <Typography variant="h4" fontWeight={800} color="#0F172A" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="#0F172A" sx={{ mt: 0.5, fontWeight: 800 }}>
                 {metrics.total}
               </Typography>
-              <Typography variant="caption" color="text.secondary" fontWeight={600}>
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
                 Lifetime Generated
               </Typography>
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={2.4}>
+        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#FEF2F2", border: "1px solid #FCA5A5" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="error.dark" fontWeight={800} textTransform="uppercase">
+              <Typography variant="caption" color="error.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
                 Active Open Alerts
               </Typography>
-              <Typography variant="h4" fontWeight={900} color="error.main" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="error.main" sx={{ mt: 0.5, fontWeight: 900 }}>
                 {metrics.open}
               </Typography>
-              <Typography variant="caption" color="error.dark" fontWeight={600}>
+              <Typography variant="caption" color="error.dark" sx={{ fontWeight: 600 }}>
                 Pending Evaluation
               </Typography>
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={2.4}>
+        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#FFF7ED", border: "1px solid #FDBA74" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="warning.dark" fontWeight={800} textTransform="uppercase">
+              <Typography variant="caption" color="warning.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
                 Critical Severity
               </Typography>
-              <Typography variant="h4" fontWeight={900} color="warning.main" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="warning.main" sx={{ mt: 0.5, fontWeight: 900 }}>
                 {metrics.critical}
               </Typography>
-              <Typography variant="caption" color="warning.dark" fontWeight={600}>
+              <Typography variant="caption" color="warning.dark" sx={{ fontWeight: 600 }}>
                 Probability ≥ 80%
               </Typography>
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={2.4}>
+        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#EFF6FF", border: "1px solid #93C5FD" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="primary.dark" fontWeight={800} textTransform="uppercase">
+              <Typography variant="caption" color="primary.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
                 Under Review
               </Typography>
-              <Typography variant="h4" fontWeight={800} color="primary.main" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="primary.main" sx={{ mt: 0.5, fontWeight: 800 }}>
                 {metrics.underReview}
               </Typography>
-              <Typography variant="caption" color="primary.dark" fontWeight={600}>
+              <Typography variant="caption" color="primary.dark" sx={{ fontWeight: 600 }}>
                 In Evaluation / Escalated
               </Typography>
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={2.4}>
+        <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#F0FDF4", border: "1px solid #86EFAC" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
-              <Typography variant="caption" color="success.dark" fontWeight={800} textTransform="uppercase">
+              <Typography variant="caption" color="success.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
                 Resolved / Closed
               </Typography>
-              <Typography variant="h4" fontWeight={800} color="success.main" sx={{ mt: 0.5 }}>
+              <Typography variant="h4" color="success.main" sx={{ mt: 0.5, fontWeight: 800 }}>
                 {metrics.resolved}
               </Typography>
-              <Typography variant="caption" color="success.dark" fontWeight={600}>
+              <Typography variant="caption" color="success.dark" sx={{ fontWeight: 600 }}>
                 Interventions Managed
               </Typography>
             </CardContent>
@@ -409,25 +409,27 @@ export default function AlertsPage() {
 
       {/* ─── Filter & Search Toolbar ─── */}
       <Paper elevation={0} sx={{ p: 2.5, borderRadius: 3, bgcolor: "#FFFFFF", border: "1px solid #E2E8F0" }}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={4}>
+        <Grid container spacing={2} sx={{ alignItems: "center" }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <TextField
               fullWidth
               size="small"
               placeholder="Search by patient code, alert ID, notes..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon sx={{ color: "text.secondary" }} />
-                  </InputAdornment>
-                ),
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon sx={{ color: "text.secondary" }} />
+                    </InputAdornment>
+                  ),
+                }
               }}
             />
           </Grid>
 
-          <Grid item xs={12} sm={4} md={2.5}>
+          <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
             <TextField
               select
               fullWidth
@@ -444,7 +446,7 @@ export default function AlertsPage() {
             </TextField>
           </Grid>
 
-          <Grid item xs={12} sm={4} md={2.5}>
+          <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
             <TextField
               select
               fullWidth
@@ -462,7 +464,7 @@ export default function AlertsPage() {
             </TextField>
           </Grid>
 
-          <Grid item xs={12} sm={4} md={3}>
+          <Grid size={{ xs: 12, sm: 4, md: 3 }}>
             <TextField
               select
               fullWidth
@@ -506,7 +508,7 @@ export default function AlertsPage() {
                   <TableCell colSpan={8} align="center" sx={{ py: 6 }}>
                     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 1 }}>
                       <HourglassEmptyIcon sx={{ fontSize: 40, color: "text.secondary" }} />
-                      <Typography variant="body1" fontWeight={700} color="text.secondary">
+                      <Typography variant="body1" color="text.secondary" sx={{ fontWeight: 700 }}>
                         No alerts matching current filters
                       </Typography>
                     </Box>
@@ -528,7 +530,7 @@ export default function AlertsPage() {
                     >
                       <TableCell sx={{ fontWeight: 800 }}>#{alertItem.id}</TableCell>
                       <TableCell>
-                        <Typography variant="body2" fontWeight={800} color="primary.main">
+                        <Typography variant="body2" color="primary.main" sx={{ fontWeight: 800 }}>
                           {patient ? patient.patient_code : `Patient #${alertItem.patient_id}`}
                         </Typography>
                         {patient && (
@@ -583,14 +585,14 @@ export default function AlertsPage() {
                           </Typography>
                         )}
                         {alertItem.reviewed_by && (
-                          <Typography variant="caption" display="block" color="text.secondary" fontWeight={600}>
+                          <Typography variant="caption" color="text.secondary" sx={{ display: "block", fontWeight: 600 }}>
                             By: {alertItem.reviewed_by}
                           </Typography>
                         )}
                       </TableCell>
 
                       <TableCell>
-                        <Typography variant="caption" color="text.secondary" fontWeight={600} display="flex" alignItems="center" gap={0.5}>
+                        <Typography variant="caption" color="text.secondary" sx={{ display: "flex", alignItems: "center", gap: 0.5, fontWeight: 600 }}>
                           <ScheduleIcon fontSize="inherit" />
                           {new Date(alertItem.created_at).toLocaleDateString()}{" "}
                           {new Date(alertItem.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}

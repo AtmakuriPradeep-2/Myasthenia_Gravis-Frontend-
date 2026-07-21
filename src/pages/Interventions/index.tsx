@@ -310,7 +310,7 @@ export default function InterventionsPage() {
 
       {/* ─── Metric KPI Cards ─── */}
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#FFFFFF", border: "1px solid #E2E8F0" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
               <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700, textTransform: "uppercase" }}>
@@ -326,7 +326,7 @@ export default function InterventionsPage() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#EFF6FF", border: "1px solid #BFDBFE" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
               <Typography variant="caption" color="primary.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
@@ -342,7 +342,7 @@ export default function InterventionsPage() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#FEF2F2", border: "1px solid #FCA5A5" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
               <Typography variant="caption" color="error.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
@@ -358,7 +358,7 @@ export default function InterventionsPage() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card elevation={0} sx={{ borderRadius: 3, bgcolor: "#ECFDF5", border: "1px solid #A7F3D0" }}>
             <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
               <Typography variant="caption" color="success.dark" sx={{ fontWeight: 800, textTransform: "uppercase" }}>
@@ -377,25 +377,27 @@ export default function InterventionsPage() {
 
       {/* ─── Filter & Search Toolbar ─── */}
       <Paper elevation={0} sx={{ p: 2.5, borderRadius: 3, bgcolor: "#FFFFFF", border: "1px solid #E2E8F0" }}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={5}>
+        <Grid container spacing={2} sx={{ alignItems: "center" }}>
+          <Grid size={{ xs: 12, md: 5 }}>
             <TextField
               fullWidth
               size="small"
               placeholder="Search by patient code, clinician, or intervention notes..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon sx={{ color: "text.secondary" }} />
-                  </InputAdornment>
-                ),
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon sx={{ color: "text.secondary" }} />
+                    </InputAdornment>
+                  ),
+                }
               }}
             />
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3.5}>
+          <Grid size={{ xs: 12, sm: 6, md: 3.5 }}>
             <TextField
               select
               fullWidth
@@ -413,7 +415,7 @@ export default function InterventionsPage() {
             </TextField>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3.5}>
+          <Grid size={{ xs: 12, sm: 6, md: 3.5 }}>
             <TextField
               select
               fullWidth

@@ -26,7 +26,6 @@ export default function Dashboard() {
     data,
     isLoading,
     isError,
-    refetch,
   } = useDashboardSummary();
 
   const { data: rawPredictionsData } = usePredictions();
