@@ -200,7 +200,7 @@ export default function ReviewAlertModal({
             helperText="Detailed clinical review documentation"
           />
 
-          <Stack direction="row" alignItems="center" spacing={1} sx={{ color: "text.secondary", fontSize: "0.85rem" }}>
+          <Stack direction="row" spacing={1} sx={{ color: "text.secondary", fontSize: "0.85rem", alignItems: "center" }}>
             <PersonIcon fontSize="small" />
             <Typography variant="caption" fontWeight={600}>
               Reviewing Clinician: <strong>{currentUsername}</strong>

@@ -176,7 +176,7 @@ export default function DashboardHeader() {
               border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
-            <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 0.25 }}>
+            <Stack direction="row" spacing={1} sx={{ alignItems: "center", mb: 0.25 }}>
               <LocalHospitalIcon sx={{ fontSize: 16, color: "#FCD34D" }} />
               <Typography variant="caption" sx={{ color: "#FCD34D", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                 Critical Risk Event
