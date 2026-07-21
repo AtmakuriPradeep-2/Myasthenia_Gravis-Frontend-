@@ -60,7 +60,7 @@ function AddUserDialog({ open, onClose }: { open: boolean; onClose: () => void }
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth
-      PaperProps={{ sx: { borderRadius: 4, p: 1 } }}>
+      slotProps={{ paper: { sx: { borderRadius: 4, p: 1 } } }}>
       <DialogTitle sx={{ fontWeight: 800, color: "#0F172A", pb: 0 }}>
         <Stack direction="row" spacing={1.5} alignItems="center">
           <PersonAddRoundedIcon sx={{ color: "#2563EB" }} />
@@ -145,7 +145,7 @@ function EditUserDialog({ user, onClose }: { user: User; onClose: () => void }) 
 
   return (
     <Dialog open onClose={onClose} maxWidth="sm" fullWidth
-      PaperProps={{ sx: { borderRadius: 4, p: 1 } }}>
+      slotProps={{ paper: { sx: { borderRadius: 4, p: 1 } } }}>
       <DialogTitle sx={{ fontWeight: 800, color: "#0F172A", pb: 0 }}>
         <Stack direction="row" spacing={1.5} alignItems="center">
           <EditRoundedIcon sx={{ color: "#2563EB" }} />
@@ -181,13 +181,13 @@ function EditUserDialog({ user, onClose }: { user: User; onClose: () => void }) 
             <Select value={form.is_active ? "active" : "inactive"} label="Account Status"
               onChange={(e) => setForm((p) => ({ ...p, is_active: e.target.value === "active" }))}>
               <MenuItem value="active">
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
                   <CheckCircleRoundedIcon sx={{ color: "#10B981", fontSize: 18 }} />
                   <span>Active</span>
                 </Stack>
               </MenuItem>
               <MenuItem value="inactive">
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
                   <BlockRoundedIcon sx={{ color: "#EF4444", fontSize: 18 }} />
                   <span>Inactive</span>
                 </Stack>
@@ -226,7 +226,7 @@ function DeleteConfirmDialog({ user, onClose }: { user: User; onClose: () => voi
   };
   return (
     <Dialog open onClose={onClose} maxWidth="xs" fullWidth
-      PaperProps={{ sx: { borderRadius: 4, p: 1 } }}>
+      slotProps={{ paper: { sx: { borderRadius: 4, p: 1 } } }}>
       <DialogTitle sx={{ fontWeight: 800, color: "#0F172A" }}>Delete User</DialogTitle>
       <DialogContent>
         <Typography variant="body2" sx={{ color: "#64748B" }}>
