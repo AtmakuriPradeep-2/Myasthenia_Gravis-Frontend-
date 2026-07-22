@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -33,6 +33,7 @@ import MedicationIcon from "@mui/icons-material/Medication";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import TuneIcon from "@mui/icons-material/Tune";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 
 import { useInterventions, useCreateIntervention } from "../../hooks/useInterventions";
 import { useAlerts, useUpdateAlert } from "../../hooks/useAlerts";
@@ -60,6 +61,11 @@ export default function InterventionsPage() {
   const alertsList: Alert[] = rawAlerts ?? [];
   const patientsList: Patient[] = rawPatients ?? [];
 
+  // URL search params logic
+  const [searchParams, setSearchParams] = useSearchParams();
+  const patientIdParam = searchParams.get("patientId");
+  const logParam = searchParams.get("log");
+
   // Patient Map for Quick Lookup
   const patientMap = useMemo(() => {
     const map = new Map<number, Patient>();
@@ -71,9 +77,21 @@ export default function InterventionsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [typeFilter, setTypeFilter] = useState("All");
   const [patientFilter, setPatientFilter] = useState("All");
+  const [prefilledPatientId, setPrefilledPatientId] = useState<number | undefined>(undefined);
 
   // Modal State
   const [isLogModalOpen, setIsLogModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (patientIdParam) {
+      setPatientFilter(patientIdParam);
+      setPrefilledPatientId(Number(patientIdParam));
+      if (logParam === "true") {
+        setIsLogModalOpen(true);
+      }
+      setSearchParams({}, { replace: true });
+    }
+  }, [patientIdParam, logParam, setSearchParams]);
 
   // Filtered Interventions
   const filteredInterventions = useMemo(() => {
@@ -538,10 +556,14 @@ export default function InterventionsPage() {
       {/* ─── Log Intervention Modal ─── */}
       <LogInterventionModal
         open={isLogModalOpen}
+        prefilledPatientId={prefilledPatientId}
         alertsList={alertsList}
         patientsList={patientsList}
         currentUsername={currentUsername}
-        onClose={() => setIsLogModalOpen(false)}
+        onClose={() => {
+          setIsLogModalOpen(false);
+          setPrefilledPatientId(undefined);
+        }}
         onSubmit={handleLogInterventionSubmit}
         isLoading={createInterventionMutation.isPending}
       />

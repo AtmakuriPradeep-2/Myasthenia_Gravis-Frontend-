@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Box, Alert } from "@mui/material";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 
 import PatientHeader from "../../components/patients/PatientHeader";
 import PatientFilters from "../../components/patients/PatientFilters";
@@ -27,6 +28,10 @@ export default function PatientsPage() {
 
   const patientsList: Patient[] = rawPatients ?? [];
 
+  // URL search params logic
+  const [searchParams, setSearchParams] = useSearchParams();
+  const patientIdParam = searchParams.get("patientId");
+
   // Filter States
   const [searchQuery, setSearchQuery] = useState("");
   const [sexFilter, setSexFilter] = useState("All");
@@ -41,6 +46,19 @@ export default function PatientsPage() {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [detailPatient, setDetailPatient] = useState<Patient | null>(null);
+
+  useEffect(() => {
+    if (patientIdParam && patientsList.length > 0) {
+      const patientId = Number(patientIdParam);
+      const patient = patientsList.find((p) => p.id === patientId);
+      if (patient) {
+        setDetailPatient(patient);
+        setIsDrawerOpen(true);
+        // Clear search parameter so it doesn't reopen if the user closes it manually
+        setSearchParams({}, { replace: true });
+      }
+    }
+  }, [patientIdParam, patientsList, setSearchParams]);
 
   // Client-Side Search & Filter Logic
   const filteredPatients = useMemo(() => {

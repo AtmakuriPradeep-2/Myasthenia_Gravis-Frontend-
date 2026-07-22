@@ -17,6 +17,7 @@ import LocalHospitalRoundedIcon from "@mui/icons-material/LocalHospitalRounded";
 import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
 import PsychologyRoundedIcon from "@mui/icons-material/PsychologyRounded";
 import MedicalServicesRoundedIcon from "@mui/icons-material/MedicalServicesRounded";
+import { useNavigate } from "react-router-dom";
 
 import type { Patient } from "../../types/patient";
 
@@ -44,6 +45,8 @@ const getMgfaDescription = (mgfaClass: string) => {
 };
 
 export default function PatientDetailDrawer({ open, patient, onClose }: Props) {
+  const navigate = useNavigate();
+
   if (!patient) return null;
 
   const desc = getMgfaDescription(patient.mgfa_class);
@@ -162,6 +165,10 @@ export default function PatientDetailDrawer({ open, patient, onClose }: Props) {
           fullWidth
           variant="outlined"
           startIcon={<AssessmentRoundedIcon />}
+          onClick={() => {
+            onClose();
+            navigate(`/assessments?patientId=${patient.id}`);
+          }}
           sx={{
             justifyContent: "flex-start",
             py: 1.25,
@@ -169,6 +176,12 @@ export default function PatientDetailDrawer({ open, patient, onClose }: Props) {
             borderColor: "#CBD5E1",
             color: "#0F172A",
             fontWeight: 600,
+            transition: "all 0.2s ease",
+            "&:hover": {
+              borderColor: "#2563EB",
+              color: "#2563EB",
+              bgcolor: "rgba(37, 99, 235, 0.02)",
+            },
           }}
         >
           View Assessment History
@@ -178,6 +191,10 @@ export default function PatientDetailDrawer({ open, patient, onClose }: Props) {
           fullWidth
           variant="outlined"
           startIcon={<PsychologyRoundedIcon />}
+          onClick={() => {
+            onClose();
+            navigate(`/predictions?patientId=${patient.id}&run=true`);
+          }}
           sx={{
             justifyContent: "flex-start",
             py: 1.25,
@@ -185,6 +202,12 @@ export default function PatientDetailDrawer({ open, patient, onClose }: Props) {
             borderColor: "#CBD5E1",
             color: "#0F172A",
             fontWeight: 600,
+            transition: "all 0.2s ease",
+            "&:hover": {
+              borderColor: "#10B981",
+              color: "#10B981",
+              bgcolor: "rgba(16, 185, 129, 0.02)",
+            },
           }}
         >
           Run AI Risk Prediction
@@ -194,6 +217,10 @@ export default function PatientDetailDrawer({ open, patient, onClose }: Props) {
           fullWidth
           variant="outlined"
           startIcon={<MedicalServicesRoundedIcon />}
+          onClick={() => {
+            onClose();
+            navigate(`/interventions?patientId=${patient.id}&log=true`);
+          }}
           sx={{
             justifyContent: "flex-start",
             py: 1.25,
@@ -201,6 +228,12 @@ export default function PatientDetailDrawer({ open, patient, onClose }: Props) {
             borderColor: "#CBD5E1",
             color: "#0F172A",
             fontWeight: 600,
+            transition: "all 0.2s ease",
+            "&:hover": {
+              borderColor: "#2563EB",
+              color: "#2563EB",
+              bgcolor: "rgba(37, 99, 235, 0.02)",
+            },
           }}
         >
           Record Care Intervention

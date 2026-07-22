@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -24,6 +24,7 @@ interface Props {
   onClose: () => void;
   onSubmit: (patientId: number) => Promise<any>;
   isLoading: boolean;
+  initialPatientId?: number | "";
 }
 
 export default function RunPredictionDialog({
@@ -32,9 +33,17 @@ export default function RunPredictionDialog({
   onClose,
   onSubmit,
   isLoading,
+  initialPatientId = "",
 }: Props) {
-  const [patientId, setPatientId] = useState<number | "">("");
+  const [patientId, setPatientId] = useState<number | "">(initialPatientId);
   const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    if (open) {
+      setPatientId(initialPatientId);
+      setErrorMsg("");
+    }
+  }, [open, initialPatientId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

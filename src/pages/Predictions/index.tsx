@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Grid, Alert, Typography } from "@mui/material";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 
 import PredictionHeader from "../../components/predictions/PredictionHeader";
 import PredictionCard from "../../components/predictions/PredictionCard";
@@ -23,11 +24,27 @@ export default function PredictionsPage() {
   const predictionsList: Prediction[] = rawPredictions ?? [];
   const patientsList: Patient[] = rawPatients ?? [];
 
+  // URL search params logic
+  const [searchParams, setSearchParams] = useSearchParams();
+  const patientIdParam = searchParams.get("patientId");
+  const runParam = searchParams.get("run");
+
   // Modal State
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [initialPatientId, setInitialPatientId] = useState<number | "">("");
 
   // Latest prediction card result state
   const [latestInference, setLatestInference] = useState<any | null>(null);
+
+  useEffect(() => {
+    if (patientIdParam) {
+      setInitialPatientId(Number(patientIdParam));
+      if (runParam === "true") {
+        setIsDialogOpen(true);
+      }
+      setSearchParams({}, { replace: true });
+    }
+  }, [patientIdParam, runParam, setSearchParams]);
 
   const handleRunPrediction = async (patientId: number) => {
     try {
@@ -109,7 +126,11 @@ export default function PredictionsPage() {
       <RunPredictionDialog
         open={isDialogOpen}
         patients={patientsList}
-        onClose={() => setIsDialogOpen(false)}
+        initialPatientId={initialPatientId}
+        onClose={() => {
+          setIsDialogOpen(false);
+          setInitialPatientId("");
+        }}
         onSubmit={handleRunPrediction}
         isLoading={generatePredictionMutation.isPending}
       />

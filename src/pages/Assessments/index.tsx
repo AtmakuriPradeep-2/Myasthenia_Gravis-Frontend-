@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Box, Alert } from "@mui/material";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 
 import AssessmentHeader from "../../components/assessments/AssessmentHeader";
 import AssessmentFilters from "../../components/assessments/AssessmentFilters";
@@ -25,6 +26,10 @@ export default function AssessmentsPage() {
   const assessmentsList: Assessment[] = rawAssessments ?? [];
   const patientsList: Patient[] = rawPatients ?? [];
 
+  // URL search params logic
+  const [searchParams, setSearchParams] = useSearchParams();
+  const patientIdParam = searchParams.get("patientId");
+
   // Filter States
   const [selectedPatientId, setSelectedPatientId] = useState("All");
   const [treatmentFilter, setTreatmentFilter] = useState("All");
@@ -32,6 +37,14 @@ export default function AssessmentsPage() {
 
   // Modal State
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  useEffect(() => {
+    if (patientIdParam) {
+      setSelectedPatientId(patientIdParam);
+      // Clear URL params
+      setSearchParams({}, { replace: true });
+    }
+  }, [patientIdParam, setSearchParams]);
 
   // Client-side filtering logic
   const filteredAssessments = useMemo(() => {

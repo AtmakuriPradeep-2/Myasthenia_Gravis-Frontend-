@@ -12,6 +12,7 @@ import {
 
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import PsychologyRoundedIcon from "@mui/icons-material/PsychologyRounded";
+import { useNavigate } from "react-router-dom";
 import { useRecentPredictions } from "../../hooks/UseDashboard";
 
 const getRiskColor = (risk: string) => {
@@ -27,7 +28,7 @@ const getRiskColor = (risk: string) => {
 };
 
 export default function RecentPredictions() {
-
+  const navigate = useNavigate();
   const { data: apiPredictions, isLoading } = useRecentPredictions();
 
   const predictionsList = apiPredictions ?? [];
@@ -179,6 +180,7 @@ export default function RecentPredictions() {
                         size="small"
                         variant="outlined"
                         startIcon={<VisibilityRoundedIcon />}
+                        onClick={() => navigate(`/patients?patientId=${item.patient_id}`)}
                         sx={{
                           borderRadius: 2,
                           textTransform: "none",
