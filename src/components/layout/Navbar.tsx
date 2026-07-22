@@ -64,7 +64,7 @@ export default function Navbar({ onDrawerToggle }: NavbarProps) {
     setAnchorEl(null);
   };
 
-  const handleAlertClick = (alertId: number) => {
+  const handleAlertClick = () => {
     handleClosePopover();
     navigate("/alerts");
   };
@@ -268,7 +268,7 @@ export default function Navbar({ onDrawerToggle }: NavbarProps) {
                       <Box key={alert.id}>
                         {index > 0 && <Divider sx={{ borderStyle: "dashed" }} />}
                         <ListItem
-                          onClick={() => handleAlertClick(alert.id)}
+                          onClick={handleAlertClick}
                           sx={{
                             px: 2,
                             py: 1.5,
